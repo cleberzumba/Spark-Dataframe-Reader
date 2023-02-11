@@ -1,0 +1,62 @@
+
+### Como usar o DataFrameReader para fontes de dados CSV, JSON, Parquet e Avro ###
+
+
+
+1) Carreguei quatro arquivos no Databricks e usei o notebook para ler quatro arquivos de dados 
+   de formato diferentes (CSV - JSON - Parquet - AVRO).
+   --------------------------------------------------------------------------------------------
+
+%fs ls /FileStore/tables/dataframeReader/
+
+
+
+
+2) DataFrameReader para ler o arquivo CSV
+   --------------------------------------
+
+flight_time_csv_df = spark.read \
+                          .format("csv") \
+                          .option("header", "true") \
+                          .option("inferSchema", "true") \
+                          .load("/FileStore/tables/dataframeReader/flight*.csv")  
+                          
+flight_time_csv_df.show(5)
+print(flight_time_csv_df.schema.simpleString())
+
+
+
+
+3) DataFrameReader para ler o arquivo JSON
+   ---------------------------------------
+
+flight_time_json_df = spark.read \
+                          .format("json") \
+                          .load("/FileStore/tables/dataframeReader/flight*.json")  
+
+print(flight_time_json_df.schema.simpleString())
+
+
+
+
+4) DataFrameReader para ler o arquivo Parquet
+   ------------------------------------------
+
+flight_time_parquet_df = spark.read \
+                          .format("parquet") \
+                          .load("/FileStore/tables/dataframeReader/flight*.parquet")  
+
+print(flight_time_parquet_df.schema.simpleString())
+
+
+
+
+5) DataFrameReader para ler o arquivo AVRO
+   ---------------------------------------
+
+flight_time_avro_df = spark.read \
+                          .format("avro") \
+                          .load("/FileStore/tables/dataframeReader/flight*.avro")  
+
+print(flight_time_avro_df.schema.simpleString())
+
