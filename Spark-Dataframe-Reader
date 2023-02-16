@@ -2,7 +2,7 @@
 ### Como usar o DataFrameReader para fontes de dados CSV, JSON, Parquet e Avro ### 
 
 
-
+ 
 1) Carreguei quatro arquivos no Databricks e usei o notebook para ler quatro arquivos de dados 
    de formato diferentes (CSV - JSON - Parquet - AVRO).
    --------------------------------------------------------------------------------------------
